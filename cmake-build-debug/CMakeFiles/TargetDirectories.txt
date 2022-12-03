@@ -1,0 +1,3 @@
+/home/Jaidenmagnan/COP3504C/FlappyBird/cmake-build-debug/CMakeFiles/FlappyBird.dir
+/home/Jaidenmagnan/COP3504C/FlappyBird/cmake-build-debug/CMakeFiles/edit_cache.dir
+/home/Jaidenmagnan/COP3504C/FlappyBird/cmake-build-debug/CMakeFiles/rebuild_cache.dir
