@@ -13,7 +13,7 @@ public:
     static Toolbox& getInstance();
     sf::RenderWindow window;
     int SCREEN_HEIGHT = 1000;
-    int SCREEN_WIDTH = 800;
+    int score;
 
 private:
     static Toolbox toolbox;

@@ -4,6 +4,7 @@
 
 #include "Toolbox.h"
 #include <SFML/Graphics.hpp>
+#include <iostream>
 #include "Bird.h"
 #include "Pipe.h"
 
@@ -23,6 +24,11 @@ void gameLoop() { //loops through game
     toolbox.window.setKeyRepeatEnabled(false);
     Bird *bird = new Bird();
     std::vector<Pipe*> pipes = {new Pipe(1000),new Pipe(1400),new Pipe(1800), new Pipe(2200) };
+
+    sf::Font font;
+    font.loadFromFile("assets/Cave-Story.ttf");
+
+    sf::Text scoreText;
 
     while(toolbox.window.isOpen()) {
         //Event polling
@@ -53,11 +59,20 @@ void gameLoop() { //loops through game
             pipe->draw();
             pipe->reset();
             pipe->move(playing);
+            pipe->addPoint(bird->getPosition());
             if (pipe->checkCollision(bird->getPosition())) {
                 playing = false;
             }
         }
         bird->draw();
+
+        scoreText.setFont(font);
+        scoreText.setCharacterSize(100);
+        scoreText.setString(std::to_string(toolbox.score));
+        scoreText.setFillColor(sf::Color::White);
+        scoreText.setPosition(100, 40);
+
+        toolbox.window.draw(scoreText);
         toolbox.window.display();
 
 
@@ -66,5 +81,7 @@ void gameLoop() { //loops through game
 
 int main() {
     launch();
+    Toolbox &toolbox = Toolbox::getInstance();
+    std::cout << toolbox.score;
     return 0;
 }

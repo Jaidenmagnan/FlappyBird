@@ -12,12 +12,20 @@ public:
     void move(bool playing);
     void reset();
     bool checkCollision(sf::Vector2f bird) const;
+    void addPoint(sf::Vector2f bird);
+
+    int x;
 
 private:
     sf::Texture topPipeTexture;
     sf::Texture botPipeTexture;
+
     sf::Vector2f topPipePos;
     sf::Vector2f botPipePos;
+
+
+    sf::Vector2f  startingTopPos;
+    sf::Vector2f  startingBotPos;
 
 
 };

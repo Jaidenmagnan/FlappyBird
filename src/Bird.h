@@ -18,6 +18,7 @@ private:
     bool alive;
     bool flap;
 
+
 public:
     Bird();
     bool checkCollision(sf::Vector2f check);
