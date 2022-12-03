@@ -67,6 +67,12 @@ build CMakeFiles/FlappyBird.dir/src/Toolbox.cpp.o: CXX_COMPILER__FlappyBird_Debu
   OBJECT_DIR = CMakeFiles/FlappyBird.dir
   OBJECT_FILE_DIR = CMakeFiles/FlappyBird.dir/src
 
+build CMakeFiles/FlappyBird.dir/src/Pipe.cpp.o: CXX_COMPILER__FlappyBird_Debug /home/Jaidenmagnan/COP3504C/FlappyBird/src/Pipe.cpp || cmake_object_order_depends_target_FlappyBird
+  DEP_FILE = CMakeFiles/FlappyBird.dir/src/Pipe.cpp.o.d
+  FLAGS = -g -std=gnu++14
+  OBJECT_DIR = CMakeFiles/FlappyBird.dir
+  OBJECT_FILE_DIR = CMakeFiles/FlappyBird.dir/src
+
 
 # =============================================================================
 # Link build statements for EXECUTABLE target FlappyBird
@@ -75,7 +81,7 @@ build CMakeFiles/FlappyBird.dir/src/Toolbox.cpp.o: CXX_COMPILER__FlappyBird_Debu
 #############################################
 # Link the executable FlappyBird
 
-build FlappyBird: CXX_EXECUTABLE_LINKER__FlappyBird_Debug CMakeFiles/FlappyBird.dir/src/FlappyBird.cpp.o CMakeFiles/FlappyBird.dir/src/Bird.cpp.o CMakeFiles/FlappyBird.dir/src/Toolbox.cpp.o | /usr/lib64/libsfml-graphics.so.2.5.1 /usr/lib64/libsfml-audio.so.2.5.1 /usr/lib64/libsfml-window.so.2.5.1 /usr/lib64/libsfml-system.so.2.5.1
+build FlappyBird: CXX_EXECUTABLE_LINKER__FlappyBird_Debug CMakeFiles/FlappyBird.dir/src/FlappyBird.cpp.o CMakeFiles/FlappyBird.dir/src/Bird.cpp.o CMakeFiles/FlappyBird.dir/src/Toolbox.cpp.o CMakeFiles/FlappyBird.dir/src/Pipe.cpp.o | /usr/lib64/libsfml-graphics.so.2.5.1 /usr/lib64/libsfml-audio.so.2.5.1 /usr/lib64/libsfml-window.so.2.5.1 /usr/lib64/libsfml-system.so.2.5.1
   FLAGS = -g
   LINK_LIBRARIES = /usr/lib64/libsfml-graphics.so.2.5.1  /usr/lib64/libsfml-audio.so.2.5.1  /usr/lib64/libsfml-window.so.2.5.1  /usr/lib64/libsfml-system.so.2.5.1
   OBJECT_DIR = CMakeFiles/FlappyBird.dir

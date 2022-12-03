@@ -5,6 +5,7 @@
 #include "Toolbox.h"
 #include <SFML/Graphics.hpp>
 #include "Bird.h"
+#include "Pipe.h"
 
 
 void render();
@@ -13,14 +14,15 @@ void gameLoop();
 
 void launch() { //launches the game loop
     gameLoop();
-
 }
+
 
 void gameLoop() { //loops through game
     int playing = true;
     Toolbox &toolbox = Toolbox::getInstance();
     toolbox.window.setKeyRepeatEnabled(false);
     Bird *bird = new Bird();
+    std::vector<Pipe*> pipes = {new Pipe(1000),new Pipe(1400),new Pipe(1800), new Pipe(2200) };
 
     while(toolbox.window.isOpen()) {
         //Event polling
@@ -47,6 +49,11 @@ void gameLoop() { //loops through game
         //toolbox.window.clear(sf::Color::Blue); //changes color to blue
         bird->updatePosition(mouseClick);
         toolbox.window.clear();
+        for(Pipe* pipe : pipes) {
+            pipe->draw();
+            pipe->move();
+            pipe->reset();
+        }
         bird->draw();
         toolbox.window.display();
 

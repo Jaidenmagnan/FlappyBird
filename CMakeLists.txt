@@ -12,6 +12,7 @@ add_executable(FlappyBird
         "src/FlappyBird.cpp"
         "src/Bird.cpp"
         "src/Toolbox.cpp"
+        "src/Pipe.cpp"
         )
 
 target_link_libraries(FlappyBird sfml-graphics sfml-audio sfml-window)
