@@ -9,8 +9,9 @@ class Pipe {
 public:
     explicit Pipe(int x);
     void draw();
-    void move();
+    void move(bool playing);
     void reset();
+    bool checkCollision(sf::Vector2f bird) const;
 
 private:
     sf::Texture topPipeTexture;

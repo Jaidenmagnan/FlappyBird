@@ -10,7 +10,6 @@ Bird::Bird() {
     velocity = 0;
     gravity = .0002;
     lift = -.5;
-    alive = true;
 }
 
 void Bird::draw() {
@@ -53,4 +52,8 @@ void Bird::updatePosition(bool click) {
 
 bool Bird::checkCollision(sf::Vector2f check) {
     return check.y == this->pos.y;
+}
+
+sf::Vector2f Bird::getPosition() {
+    return pos;
 }

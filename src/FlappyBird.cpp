@@ -51,8 +51,11 @@ void gameLoop() { //loops through game
         toolbox.window.clear();
         for(Pipe* pipe : pipes) {
             pipe->draw();
-            pipe->move();
             pipe->reset();
+            pipe->move(playing);
+            if (pipe->checkCollision(bird->getPosition())) {
+                playing = false;
+            }
         }
         bird->draw();
         toolbox.window.display();

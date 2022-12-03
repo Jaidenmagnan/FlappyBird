@@ -9,7 +9,21 @@ Pipe::Pipe(int x) {
     Toolbox &toolbox = Toolbox::getInstance();
     int height = random() % (toolbox.SCREEN_HEIGHT / 2);
     topPipePos = {float(x), float(height)};
-    botPipePos = {float(x-104), topPipePos.y + 300};
+    botPipePos = {float(x-104), topPipePos.y + 400};
+
+}
+
+bool Pipe::checkCollision(sf::Vector2f bird) const {
+
+    if(bird.x + 96 >= topPipePos.x && bird.y < topPipePos.y && bird.x <= topPipePos.x + 104 ) {
+        return true;
+    }
+    else if(bird.x + 96 >= botPipePos.x && bird.y - 96 > botPipePos.y && bird.x <=botPipePos.x + 104) {
+        return true;
+    }
+    else {
+        return false;
+    }
 
 }
 
@@ -18,7 +32,7 @@ void Pipe::reset() {
         Toolbox &toolbox = Toolbox::getInstance();
         int height = (random()) % (toolbox.SCREEN_HEIGHT / 2);
         topPipePos = {float(1200) + 400, float(height)};
-        botPipePos = {float(1200-104) + 400, topPipePos.y + 300};
+        botPipePos = {float(1200-104) + 400, topPipePos.y + 400};
     }
 
 }
@@ -47,10 +61,12 @@ void Pipe::draw() {
 
 }
 
-void Pipe::move() {
-    float speed = .3;
-    botPipePos.x -= speed;
-    topPipePos.x -= speed;
+void Pipe::move(bool playing) {
+    if (playing) {
+        float speed = .3;
+        botPipePos.x -= speed;
+        topPipePos.x -= speed;
+    }
 
 }
 

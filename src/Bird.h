@@ -23,6 +23,7 @@ public:
     bool checkCollision(sf::Vector2f check);
     void draw();
     void updatePosition(bool click);
+    sf::Vector2f getPosition();
 };
 
 
