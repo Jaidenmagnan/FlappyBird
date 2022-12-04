@@ -1,6 +1,6 @@
 cmake-build-debug
 CMakeCache.txt
-cmake_isntall.cmake
+cmake_install.cmake
 Makefile
 FlappyBird
 CMakeFiles
