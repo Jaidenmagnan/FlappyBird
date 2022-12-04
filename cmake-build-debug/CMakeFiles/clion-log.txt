@@ -1,5 +1,0 @@
-/home/Jaidenmagnan/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/222.4345.21/bin/cmake/linux/bin/cmake -DCMAKE_BUILD_TYPE=Debug -DCMAKE_MAKE_PROGRAM=/home/Jaidenmagnan/.local/share/JetBrains/Toolbox/apps/CLion/ch-0/222.4345.21/bin/ninja/linux/ninja -G Ninja -S /home/Jaidenmagnan/COP3504C/FlappyBird -B /home/Jaidenmagnan/COP3504C/FlappyBird/cmake-build-debug
--- Found SFML 2.5.1 in /usr/lib64/cmake/SFML
--- Configuring done
--- Generating done
--- Build files have been written to: /home/Jaidenmagnan/COP3504C/FlappyBird/cmake-build-debug
