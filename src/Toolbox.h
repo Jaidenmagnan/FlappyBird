@@ -13,7 +13,7 @@ public:
     static Toolbox& getInstance();
     sf::RenderWindow window;
     int SCREEN_HEIGHT = 768;
-    bool playing = true;
+    bool playing = false;
     int score;
 
 private:

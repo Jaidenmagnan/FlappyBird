@@ -59,7 +59,7 @@ void gameLoop() { //loops through game
                 if (event.type == sf::Event::KeyPressed) { //checks if the user presses the space bar
                     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
                         playing = true;
-                        toolbox.score = 0;
+                        toolbox.score = 1;
                         pipes.clear();
                         pipes = {new Pipe(1000),new Pipe(1400),new Pipe(1800), new Pipe(2200) };
                         delete bird;

@@ -16,7 +16,7 @@ Pipe::Pipe(int x) { //constructor for pipes
 
 void Pipe::addPoint(sf::Vector2f bird) const { //adds a point if the user passes the pipes
     Toolbox &toolbox = Toolbox::getInstance();
-    if(int(bird.x) == int(topPipePos.x)){
+    if(botPipePos.x == 300) {
         toolbox.score += 1;
     }
 
@@ -24,10 +24,10 @@ void Pipe::addPoint(sf::Vector2f bird) const { //adds a point if the user passes
 bool Pipe::checkCollision(sf::Vector2f bird) const { //checks collision with the bird
     Toolbox &toolbox = Toolbox::getInstance();
 
-    if(bird.x + 96 > topPipePos.x && bird.y < topPipePos.y && bird.x < topPipePos.x + 104 ) {
+    if(bird.x  > topPipePos.x - 104 && bird.y < topPipePos.y && bird.x < topPipePos.x + 104 ) {
         return true;
     }
-    else if(bird.x + 96 > botPipePos.x && bird.y + 96 > botPipePos.y && bird.x < botPipePos.x + 104) {
+    else if(bird.x > botPipePos.x && bird.y + 96 >= botPipePos.y && bird.x - 96 < botPipePos.x + 104) {
         return true;
     }
     else {
@@ -39,6 +39,7 @@ bool Pipe::checkCollision(sf::Vector2f bird) const { //checks collision with the
 void Pipe::reset() { //resets each pipe so they wrap around
     if(topPipePos.x < 0) {
         Toolbox &toolbox = Toolbox::getInstance();
+        toolbox.score += 1;
         int height = ((random() -200 ) % ((toolbox.SCREEN_HEIGHT) / 2));
         topPipePos = {float(1600) , float(height)};
         botPipePos = {float(1600 - 104) , topPipePos.y + 400};
