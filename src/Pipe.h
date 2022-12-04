@@ -12,7 +12,7 @@ public:
     void move(bool playing);
     void reset();
     bool checkCollision(sf::Vector2f bird) const;
-    void addPoint(sf::Vector2f bird);
+    void addPoint(sf::Vector2f bird) const;
 
     int x;
 
@@ -23,9 +23,6 @@ private:
     sf::Vector2f topPipePos;
     sf::Vector2f botPipePos;
 
-
-    sf::Vector2f  startingTopPos;
-    sf::Vector2f  startingBotPos;
 
 
 };

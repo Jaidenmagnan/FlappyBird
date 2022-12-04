@@ -9,7 +9,6 @@
 #include "Pipe.h"
 
 
-void render();
 void launch();
 void gameLoop();
 
@@ -22,14 +21,17 @@ void gameLoop() { //loops through game
     int playing = true;
     Toolbox &toolbox = Toolbox::getInstance();
     toolbox.window.setKeyRepeatEnabled(false);
+
+    //initializes sprites
     Bird *bird = new Bird();
     std::vector<Pipe*> pipes = {new Pipe(1000),new Pipe(1400),new Pipe(1800), new Pipe(2200) };
 
+    //loads the fonts
     sf::Font font;
     font.loadFromFile("assets/Cave-Story.ttf");
-
     sf::Text scoreText;
 
+    //the game loop itself
     while(toolbox.window.isOpen()) {
         //Event polling
         sf::Event event{};
@@ -40,7 +42,7 @@ void gameLoop() { //loops through game
                 toolbox.window.close();
             }
 
-            if (event.type == sf::Event::KeyPressed && playing) {
+            if (event.type == sf::Event::KeyPressed && playing) { //checks if the user presses the space bar
                 if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
                     mouseClick = true;
                 }
@@ -48,25 +50,26 @@ void gameLoop() { //loops through game
             }
         }
 
-        if(bird->checkCollision({0,float(toolbox.SCREEN_HEIGHT - 300)})) {
+        if(bird->checkCollision({0,float(toolbox.SCREEN_HEIGHT - 300)})) { //checks for collision with the ground
             playing = false;
         }
 
         //toolbox.window.clear(sf::Color::Blue); //changes color to blue
         bird->updatePosition(mouseClick);
         toolbox.window.clear();
-        for(Pipe* pipe : pipes) {
+        for(Pipe* pipe : pipes) { //pipe logic
             pipe->draw();
             pipe->reset();
             pipe->move(playing);
             pipe->addPoint(bird->getPosition());
-            if (pipe->checkCollision(bird->getPosition())) {
+            if (pipe->checkCollision(bird->getPosition())) { //checks if the bird hits the pipes
                 playing = false;
+                bird->zeroVelocity();
             }
         }
         bird->draw();
 
-        scoreText.setFont(font);
+        scoreText.setFont(font); //renders things to the screen
         scoreText.setCharacterSize(100);
         scoreText.setString(std::to_string(toolbox.score));
         scoreText.setFillColor(sf::Color::White);

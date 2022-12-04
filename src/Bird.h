@@ -15,12 +15,10 @@ private:
     float lift;
 
     sf::Vector2f pos;
-    bool alive;
-    bool flap;
-
 
 public:
     Bird();
+    void zeroVelocity();
     bool checkCollision(sf::Vector2f check);
     void draw();
     void updatePosition(bool click);

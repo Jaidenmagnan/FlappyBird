@@ -5,31 +5,29 @@
 #include <iostream>
 #include "Pipe.h"
 
-Pipe::Pipe(int x) {
+Pipe::Pipe(int x) { //constructor for pipes
     Toolbox &toolbox = Toolbox::getInstance();
-    this->x = x;
-    int height = (random() - 150) % (toolbox.SCREEN_HEIGHT / 2 );
+
+    int height = ((random() -200 ) % ((toolbox.SCREEN_HEIGHT) / 2));
     topPipePos = {float(x), float(height)};
-    startingTopPos = topPipePos;
     botPipePos = {float(x-104), topPipePos.y + 400};
-    startingBotPos = botPipePos;
 
 }
 
-void Pipe::addPoint(sf::Vector2f bird) {
+void Pipe::addPoint(sf::Vector2f bird) const { //adds a point if the user passes the pipes
     Toolbox &toolbox = Toolbox::getInstance();
-    if(bird.x > topPipePos.x && bird.x <= topPipePos.x + .25){
+    if(int(bird.x) == int(topPipePos.x)){
         toolbox.score += 1;
     }
 
 }
-bool Pipe::checkCollision(sf::Vector2f bird) const {
+bool Pipe::checkCollision(sf::Vector2f bird) const { //checks collision with the bird
     Toolbox &toolbox = Toolbox::getInstance();
 
-    if(bird.x + 96 >= topPipePos.x && bird.y < topPipePos.y && bird.x <= topPipePos.x + 104 ) {
+    if(bird.x + 96 > topPipePos.x && bird.y < topPipePos.y && bird.x < topPipePos.x + 104 ) {
         return true;
     }
-    else if(bird.x + 96 >= botPipePos.x && bird.y + 96 > botPipePos.y && bird.x <=botPipePos.x + 104) {
+    else if(bird.x + 96 > botPipePos.x && bird.y + 96 > botPipePos.y && bird.x < botPipePos.x + 104) {
         return true;
     }
     else {
@@ -38,21 +36,24 @@ bool Pipe::checkCollision(sf::Vector2f bird) const {
 
 }
 
-void Pipe::reset() {
+void Pipe::reset() { //resets each pipe so they wrap around
     if(topPipePos.x < 0) {
         Toolbox &toolbox = Toolbox::getInstance();
-        int height = (random() - 150) % (toolbox.SCREEN_HEIGHT / 2);
-        topPipePos = {startingTopPos.x , float(height)};
-        botPipePos = {startingBotPos.x , topPipePos.y + 400};
+        int height = ((random() -200 ) % ((toolbox.SCREEN_HEIGHT) / 2));
+        topPipePos = {float(1600) , float(height)};
+        botPipePos = {float(1600 - 104) , topPipePos.y + 400};
     }
 
 }
 
-void Pipe::draw() {
+void Pipe::draw() { //draws the pipes to the screen
     Toolbox& toolbox = Toolbox::getInstance();
 
-    topPipeTexture.loadFromFile("assets/GreenPipe.png");
+
     sf::Sprite topPipeSprite;
+    topPipeTexture.loadFromFile("assets/GreenPipe.png");
+    botPipeTexture.loadFromFile("assets/GreenPipe.png");
+
 
     topPipeSprite.setTexture(topPipeTexture);
     topPipeSprite.setPosition(topPipePos);
@@ -61,7 +62,6 @@ void Pipe::draw() {
 
     toolbox.window.draw(topPipeSprite);
 
-    botPipeTexture.loadFromFile("assets/GreenPipe.png");
     sf::Sprite botPipeSprite;
 
     botPipeSprite.setTexture(botPipeTexture);

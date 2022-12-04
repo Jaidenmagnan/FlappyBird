@@ -5,14 +5,14 @@
 #include <iostream>
 #include "Bird.h"
 
-Bird::Bird() {
+Bird::Bird() { //initializes a bird
     pos = {300, 200};
     velocity = 0;
-    gravity = .0002;
-    lift = -.5;
+    gravity = .0008;
+    lift = -.7;
 }
 
-void Bird::draw() {
+void Bird::draw() { //draws the board to the screen
     if (this->velocity < .1) {
         birdTexture.loadFromFile("assets/Flying.png", sf::IntRect(96, 0, 32, 32));
     }
@@ -30,7 +30,7 @@ void Bird::draw() {
 
 }
 
-void Bird::updatePosition(bool click) {
+void Bird::updatePosition(bool click) { //this updates position, the physics perchance
     Toolbox &toolbox = Toolbox::getInstance();
     this->velocity += this->gravity;
     pos.y += this->velocity;
@@ -50,10 +50,16 @@ void Bird::updatePosition(bool click) {
     }
 }
 
-bool Bird::checkCollision(sf::Vector2f check) {
+bool Bird::checkCollision(sf::Vector2f check) { //checks for collision
     return check.y == this->pos.y;
 }
 
-sf::Vector2f Bird::getPosition() {
+sf::Vector2f Bird::getPosition() { //gets position of the bird
     return pos;
+}
+
+
+void Bird::zeroVelocity() { //sets the velocity to 0
+    gravity = .05;
+
 }
