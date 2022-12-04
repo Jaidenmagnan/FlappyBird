@@ -18,8 +18,8 @@ void launch() { //launches the game loop
 
 
 void gameLoop() { //loops through game
-    int playing = true;
     Toolbox &toolbox = Toolbox::getInstance();
+    bool &playing = toolbox.playing;
     toolbox.window.setKeyRepeatEnabled(false);
 
     //initializes sprites
@@ -33,15 +33,12 @@ void gameLoop() { //loops through game
 
     sf::Texture backgroundTexture;
 
-    backgroundTexture.loadFromFile("assets/explosion.png");
+    backgroundTexture.loadFromFile("assets/background.png");
     sf::Sprite background;
     background.setTexture(backgroundTexture);
-    background.scale(10, 10);
 
     //the game loop itself
     while(toolbox.window.isOpen()) {
-        //toolbox.window.draw(background);
-        //toolbox.window.display();
         //Event polling
         sf::Event event{};
         bool mouseClick = false;
@@ -58,7 +55,7 @@ void gameLoop() { //loops through game
 
             }
 
-            if(playing == false) {
+            if(playing == false) { //resets the game if lost
                 if (event.type == sf::Event::KeyPressed) { //checks if the user presses the space bar
                     if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
                         playing = true;
@@ -80,6 +77,7 @@ void gameLoop() { //loops through game
         //toolbox.window.clear(sf::Color::Blue); //changes color to blue
         bird->updatePosition(mouseClick);
         toolbox.window.clear();
+        toolbox.window.draw(background);
         for(Pipe* pipe : pipes) { //pipe logic
             pipe->draw();
             pipe->reset();

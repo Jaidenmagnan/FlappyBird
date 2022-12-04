@@ -12,7 +12,8 @@ class Toolbox {
 public:
     static Toolbox& getInstance();
     sf::RenderWindow window;
-    int SCREEN_HEIGHT = 1000;
+    int SCREEN_HEIGHT = 768;
+    bool playing = true;
     int score;
 
 private:

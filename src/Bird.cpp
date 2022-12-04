@@ -35,9 +35,10 @@ void Bird::updatePosition(bool click) { //this updates position, the physics per
     this->velocity += this->gravity;
     pos.y += this->velocity;
 
-    if(pos.y > toolbox.SCREEN_HEIGHT - 300) {
+    if(pos.y > toolbox.SCREEN_HEIGHT - 80) {
         this->velocity = 0;
-        pos.y = toolbox.SCREEN_HEIGHT - 300;
+        pos.y = toolbox.SCREEN_HEIGHT - 80;
+        toolbox.playing = false;
     }
 
     if(pos.y < 0) {
