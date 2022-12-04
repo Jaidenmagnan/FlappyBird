@@ -21,6 +21,7 @@ void gameLoop() { //loops through game
     Toolbox &toolbox = Toolbox::getInstance();
     bool &playing = toolbox.playing;
     toolbox.window.setKeyRepeatEnabled(false);
+    toolbox.window.setPosition({100,100});
 
     //initializes sprites
     Bird *bird = new Bird();
