@@ -4,3 +4,4 @@ cmake_isntall.cmake
 Makefile
 FlappyBird
 CMakeFiles
+.idea
