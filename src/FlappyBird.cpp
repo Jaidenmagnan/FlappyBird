@@ -31,8 +31,17 @@ void gameLoop() { //loops through game
     font.loadFromFile("assets/Cave-Story.ttf");
     sf::Text scoreText;
 
+    sf::Texture backgroundTexture;
+
+    backgroundTexture.loadFromFile("assets/explosion.png");
+    sf::Sprite background;
+    background.setTexture(backgroundTexture);
+    background.scale(10, 10);
+
     //the game loop itself
     while(toolbox.window.isOpen()) {
+        //toolbox.window.draw(background);
+        //toolbox.window.display();
         //Event polling
         sf::Event event{};
         bool mouseClick = false;
@@ -46,6 +55,20 @@ void gameLoop() { //loops through game
                 if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
                     mouseClick = true;
                 }
+
+            }
+
+            if(playing == false) {
+                if (event.type == sf::Event::KeyPressed) { //checks if the user presses the space bar
+                    if(sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+                        playing = true;
+                        toolbox.score = 0;
+                        pipes.clear();
+                        pipes = {new Pipe(1000),new Pipe(1400),new Pipe(1800), new Pipe(2200) };
+                        delete bird;
+                        bird = new Bird();
+                    }
+                    }
 
             }
         }
@@ -76,6 +99,7 @@ void gameLoop() { //loops through game
         scoreText.setPosition(100, 40);
 
         toolbox.window.draw(scoreText);
+
         toolbox.window.display();
 
 
